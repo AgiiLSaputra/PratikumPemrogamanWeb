@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agil Saputra — Portofolio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Agil Saputra</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Pendidikan</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-text">
+                <span class="hero-tag">✦ Web Developer</span>
+                <h2>Selamat Datang<br>di Portofolio Saya</h2>
+                <p>Web Developer · Mobile Enthusiast</p>
+            </div>
+            <div class="hero-img-wrap">
+                <img src="FotoSaya.jpeg" alt="Foto profil Agil Saputra">
+            </div>
+        </section>
+
+        <article id="about">
+            <div class="section-label">— Tentang Saya</div>
+            <h2>Siapa Saya?</h2>
+            <p>Saya adalah mahasiswa Teknik Informatika yang penuh semangat dan kreatif. Tujuan saya adalah menjadi
+                seorang <strong>Software Engineer</strong> yang berdampak bagi banyak orang.</p>
+        </article>
+
+        <section id="education">
+            <div class="section-label">— Riwayat Pendidikan</div>
+            <h2>Pendidikan</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tahun</th>
+                        <th>Institusi</th>
+                        <th>Jurusan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge">2024–Kini</span></td>
+                        <td>Universitas Islam Riau</td>
+                        <td>Teknik Informatika</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge muted">2021–2024</span></td>
+                        <td>SMA Negeri 1 Kampar Timur</td>
+                        <td>IPA</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge muted">2019–2021</span></td>
+                        <td>SMP Negeri 2 Kampar</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge muted">2013–2019</span></td>
+                        <td>SD Muhammadiyah 002 Penyasawan</td>
+                        <td>—</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="contact">
+            <div class="section-label">— Hubungi Saya</div>
+            <h2>Mari Berkenalan</h2>
+            <form action="" method="POST">
+                <div class="form-row">
+                    <div>
+                        <label for="name">Nama</label>
+                        <input type="text" id="name" name="name" placeholder="Nama kamu" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="contoh@email.com" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="message">Pesan</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tulis pesanmu di sini..."
+                        required></textarea>
+                </div>
+                <button type="submit">Kirim Pesan ✦</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Agil Saputra. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
