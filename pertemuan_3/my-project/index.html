@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agil Saputra — Portofolio</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Cormorant Garamond', 'serif'],
+            sans: ['Syne', 'sans-serif'],
+            mono: ['DM Mono', 'monospace'],
+          },
+          colors: {
+            cream: {
+              50: '#faf8f3',
+              100: '#f5f0e8',
+              200: '#ede4d0',
+            },
+            ink: {
+              900: '#0e0d0b',
+              800: '#1a1916',
+              700: '#2a2822',
+              600: '#3d3b33',
+            },
+            moss: {
+              400: '#7a9e6e',
+              500: '#5e8352',
+              600: '#4a6b40',
+            },
+            rust: {
+              400: '#c97b4b',
+              500: '#b5622e',
+            },
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.8s ease forwards',
+          },
+          keyframes: {
+            fadeUp: {
+              from: { opacity: '0', transform: 'translateY(24px)' },
+              to: { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* Decorative line separator */
+    .ornament::before,
+    .ornament::after {
+      content: '——';
+      color: #7a9e6e;
+      opacity: 0.5;
+      margin: 0 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: -0.05em;
+    }
+
+    /* Nav link underline animation */
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #7a9e6e;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Vertical text */
+    .vertical-text {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    /* Hero fade animation stagger */
+    .hero-tag {
+      animation: fadeUp 0.7s ease 0.1s both;
+    }
+
+    .hero-h2 {
+      animation: fadeUp 0.7s ease 0.25s both;
+    }
+
+    .hero-sub {
+      animation: fadeUp 0.7s ease 0.4s both;
+    }
+
+    .hero-btn {
+      animation: fadeUp 0.7s ease 0.55s both;
+    }
+
+    .hero-img {
+      animation: fadeUp 0.7s ease 0.35s both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Section fade on load */
+    section {
+      animation: fadeUp 0.9s ease both;
+    }
+
+    /* Table row hover */
+    .edu-row {
+      transition: background 0.2s;
+    }
+
+    .edu-row:hover {
+      background: rgba(122, 158, 110, 0.06);
+    }
+
+    /* Input focus ring */
+    .field:focus {
+      outline: none;
+      border-color: #7a9e6e;
+      box-shadow: 0 0 0 3px rgba(122, 158, 110, 0.12);
+    }
+
+    /* Scroll indicator */
+    @keyframes bounce-y {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(8px);
+      }
+    }
+
+    .bounce-y {
+      animation: bounce-y 1.8s ease-in-out infinite;
+    }
+  </style>
+</head>
+
+<body class="bg-cream-50 text-ink-800 font-sans antialiased overflow-x-hidden">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-ink-700/10 bg-cream-50/90 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
+
+      <!-- Logo mark -->
+      <div class="flex items-center gap-3">
+        <span
+          class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-moss-400 text-moss-500 font-mono text-xs font-medium">AS</span>
+        <span class="font-sans font-700 tracking-tight text-ink-900 text-base">Agil Saputra</span>
+      </div>
+
+      <!-- Nav -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#about"
+          class="nav-link text-sm text-ink-600 hover:text-ink-900 transition-colors font-medium tracking-wide">About</a>
+        <a href="#education"
+          class="nav-link text-sm text-ink-600 hover:text-ink-900 transition-colors font-medium tracking-wide">Pendidikan</a>
+        <a href="#contact"
+          class="nav-link text-sm text-ink-600 hover:text-ink-900 transition-colors font-medium tracking-wide">Contact</a>
+        <a href="#contact"
+          class="text-sm bg-ink-900 text-cream-100 px-5 py-2 rounded-full hover:bg-moss-500 transition-colors font-medium">Hire
+          Me</a>
+      </nav>
+
+      <!-- Mobile nav -->
+      <div class="flex md:hidden gap-4 text-sm font-medium">
+        <a href="#about" class="text-ink-600 hover:text-moss-500 transition-colors">About</a>
+        <a href="#education" class="text-ink-600 hover:text-moss-500 transition-colors">Edu</a>
+        <a href="#contact" class="text-ink-600 hover:text-moss-500 transition-colors">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="relative min-h-screen flex items-center max-w-6xl mx-auto px-6 md:px-10 py-24 overflow-hidden">
+
+    <!-- Decorative background circle -->
+    <div
+      class="absolute -right-32 top-16 w-[520px] h-[520px] rounded-full bg-moss-400/8 border border-moss-400/15 pointer-events-none">
+    </div>
+    <div class="absolute right-8 top-40 w-[300px] h-[300px] rounded-full bg-rust-400/5 pointer-events-none"></div>
+
+    <!-- Side vertical label -->
+    <div
+      class="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 items-center gap-2 -rotate-90 origin-left translate-x-0 ml-2">
+      <span class="vertical-text text-xs font-mono text-ink-600/40 tracking-widest uppercase rotate-0">Portfolio
+        2026</span>
+    </div>
+
+    <div class="grid md:grid-cols-[1fr_auto] gap-14 items-center w-full">
+
+      <!-- Text -->
+      <div class="space-y-7">
+
+        <div class="hero-tag flex items-center gap-3">
+          <span class="h-px w-10 bg-moss-400"></span>
+          <span class="font-mono text-xs text-moss-500 tracking-widest uppercase">Web Developer</span>
+        </div>
+
+        <h2
+          class="hero-h2 font-display font-700 text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight text-ink-900">
+          Agil<br>
+          <span class="italic text-moss-500">Saputra</span>
+        </h2>
+
+        <p class="hero-sub text-ink-600 text-lg md:text-xl max-w-md leading-relaxed font-light">
+          Mahasiswa Teknik Informatika yang penuh semangat membangun pengalaman digital yang bermakna.
+        </p>
+
+        <div class="hero-btn flex flex-wrap items-center gap-4 pt-2">
+          <a href="#contact"
+            class="inline-flex items-center gap-2 bg-ink-900 text-cream-50 px-7 py-3.5 rounded-full font-medium text-sm hover:bg-moss-500 transition-all hover:scale-105 active:scale-95">
+            Hubungi Saya
+            <span class="text-moss-400 group-hover:text-white">→</span>
+          </a>
+          <a href="#about"
+            class="inline-flex items-center gap-2 border border-ink-700/20 text-ink-700 px-7 py-3.5 rounded-full font-medium text-sm hover:border-moss-400 hover:text-moss-600 transition-all">
+            Lihat Portfolio
+          </a>
+        </div>
+
+        <!-- Stats row -->
+        <div class="pt-4 flex gap-10 border-t border-ink-700/10">
+          <div>
+            <div class="font-display text-3xl font-700 text-ink-900">2024</div>
+            <div class="text-xs text-ink-600/70 font-mono tracking-wide mt-0.5">Mulai Kuliah</div>
+          </div>
+          <div class="w-px bg-ink-700/10"></div>
+          <div>
+            <div class="font-display text-3xl font-700 text-ink-900">UIR</div>
+            <div class="text-xs text-ink-600/70 font-mono tracking-wide mt-0.5">Universitas</div>
+          </div>
+          <div class="w-px bg-ink-700/10"></div>
+          <div>
+            <div class="font-display text-3xl font-700 text-ink-900">TI</div>
+            <div class="text-xs text-ink-600/70 font-mono tracking-wide mt-0.5">Jurusan</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo -->
+      <div class="hero-img flex flex-col items-center gap-4">
+        <div class="relative">
+          <!-- Decorative frame offset -->
+          <div class="absolute -top-3 -left-3 w-full h-full rounded-3xl border border-moss-400/40"></div>
+          <div
+            class="w-64 h-72 md:w-72 md:h-80 rounded-3xl overflow-hidden bg-cream-200 relative shadow-2xl shadow-ink-900/10">
+            <img src="FotoSaya.jpeg" alt="Foto profil Agil Saputra" class="w-full h-full object-cover">
+            <!-- Overlay gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-900/20 to-transparent pointer-events-none"></div>
+          </div>
+          <!-- Badge -->
+          <div
+            class="absolute -bottom-4 -right-4 bg-moss-500 text-cream-50 text-xs font-mono px-4 py-2 rounded-2xl shadow-lg">
+            ✦ Available
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 bounce-y opacity-40">
+      <span class="text-xs font-mono text-ink-600 tracking-widest uppercase">Scroll</span>
+      <div class="w-px h-8 bg-ink-600/40"></div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about" class="bg-ink-900 text-cream-100 py-24">
+    <div class="max-w-6xl mx-auto px-6 md:px-10">
+
+      <div class="grid md:grid-cols-[200px_1fr] gap-12 items-start">
+
+        <!-- Label col -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-px bg-moss-400"></span>
+            <span class="font-mono text-xs text-moss-400 tracking-widest uppercase">01</span>
+          </div>
+          <h2 class="font-display text-5xl font-700 leading-tight text-cream-100">
+            Tentang<br><span class="italic text-moss-400">Saya</span>
+          </h2>
+        </div>
+
+        <!-- Content col -->
+        <div class="space-y-8">
+          <p class="text-cream-200/80 text-lg leading-relaxed font-light max-w-2xl">
+            Saya adalah mahasiswa <span class="text-moss-400 font-medium">Teknik Informatika</span> di Universitas Islam
+            Riau yang memiliki ketertarikan mendalam pada dunia web dan mobile development. Saya percaya bahwa teknologi
+            yang baik bukan hanya yang berfungsi, tetapi yang memberikan pengalaman nyata bagi penggunanya.
+          </p>
+          <p class="text-cream-200/60 text-base leading-relaxed font-light max-w-xl">
+            Tujuan saya adalah menjadi seorang <strong class="text-cream-100">Software Engineer</strong> yang tidak
+            hanya menulis kode, tetapi menciptakan solusi yang berdampak bagi banyak orang.
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="py-24 max-w-6xl mx-auto px-6 md:px-10">
+
+    <div class="flex items-end justify-between mb-14 border-b border-ink-700/10 pb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-6 h-px bg-moss-400"></span>
+          <span class="font-mono text-xs text-moss-500 tracking-widest uppercase">02</span>
+        </div>
+        <h2 class="font-display text-5xl md:text-6xl font-700 text-ink-900 leading-tight">
+          Riwayat<br><span class="italic text-moss-500">Pendidikan</span>
+        </h2>
+      </div>
+      <span class="hidden md:block font-mono text-xs text-ink-600/40 tracking-widest uppercase">Education</span>
+    </div>
+
+    <!-- Timeline style cards -->
+    <div class="relative space-y-0">
+      <!-- Vertical line -->
+      <div class="absolute left-[11px] top-2 bottom-2 w-px bg-ink-700/10 hidden md:block"></div>
+
+      <!-- Row 1 -->
+      <div
+        class="edu-row group relative md:pl-10 grid md:grid-cols-[160px_1fr] gap-4 py-7 border-b border-ink-700/8 rounded-2xl px-4 -mx-4">
+        <div
+          class="hidden md:block absolute left-0 top-8 w-5 h-5 rounded-full bg-moss-500 border-4 border-cream-50 shadow-sm">
+        </div>
+        <div class="flex md:block items-center gap-3">
+          <span
+            class="inline-block bg-moss-500/10 text-moss-600 text-xs font-mono px-3 py-1.5 rounded-full font-medium">2024
+            – Kini</span>
+        </div>
+        <div>
+          <h3 class="font-sans font-700 text-ink-900 text-lg group-hover:text-moss-600 transition-colors">Universitas
+            Islam Riau</h3>
+          <p class="text-ink-600/70 text-sm mt-1 font-mono">Teknik Informatika — S1</p>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div
+        class="edu-row group relative md:pl-10 grid md:grid-cols-[160px_1fr] gap-4 py-7 border-b border-ink-700/8 rounded-2xl px-4 -mx-4">
+        <div
+          class="hidden md:block absolute left-0 top-8 w-5 h-5 rounded-full bg-cream-200 border-4 border-cream-50 shadow-sm ring-1 ring-ink-700/15">
+        </div>
+        <div>
+          <span class="inline-block bg-ink-900/6 text-ink-600 text-xs font-mono px-3 py-1.5 rounded-full">2021 –
+            2024</span>
+        </div>
+        <div>
+          <h3 class="font-sans font-700 text-ink-900 text-lg group-hover:text-moss-600 transition-colors">SMA Negeri 1
+            Kampar Timur</h3>
+          <p class="text-ink-600/70 text-sm mt-1 font-mono">Ilmu Pengetahuan Alam (IPA)</p>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div
+        class="edu-row group relative md:pl-10 grid md:grid-cols-[160px_1fr] gap-4 py-7 border-b border-ink-700/8 rounded-2xl px-4 -mx-4">
+        <div
+          class="hidden md:block absolute left-0 top-8 w-5 h-5 rounded-full bg-cream-200 border-4 border-cream-50 shadow-sm ring-1 ring-ink-700/15">
+        </div>
+        <div>
+          <span class="inline-block bg-ink-900/6 text-ink-600 text-xs font-mono px-3 py-1.5 rounded-full">2019 –
+            2021</span>
+        </div>
+        <div>
+          <h3 class="font-sans font-700 text-ink-900 text-lg group-hover:text-moss-600 transition-colors">SMP Negeri 2
+            Kampar</h3>
+          <p class="text-ink-600/70 text-sm mt-1 font-mono">Sekolah Menengah Pertama</p>
+        </div>
+      </div>
+
+      <!-- Row 4 -->
+      <div class="edu-row group relative md:pl-10 grid md:grid-cols-[160px_1fr] gap-4 py-7 rounded-2xl px-4 -mx-4">
+        <div
+          class="hidden md:block absolute left-0 top-8 w-5 h-5 rounded-full bg-cream-200 border-4 border-cream-50 shadow-sm ring-1 ring-ink-700/15">
+        </div>
+        <div>
+          <span class="inline-block bg-ink-900/6 text-ink-600 text-xs font-mono px-3 py-1.5 rounded-full">2013 –
+            2019</span>
+        </div>
+        <div>
+          <h3 class="font-sans font-700 text-ink-900 text-lg group-hover:text-moss-600 transition-colors">SD
+            Muhammadiyah 002 Penyasawan</h3>
+          <p class="text-ink-600/70 text-sm mt-1 font-mono">Sekolah Dasar</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact" class="bg-cream-100 py-24">
+    <div class="max-w-6xl mx-auto px-6 md:px-10">
+
+      <div class="grid md:grid-cols-[1fr_1.4fr] gap-16 items-start">
+
+        <!-- Left info -->
+        <div class="space-y-6">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-px bg-moss-400"></span>
+            <span class="font-mono text-xs text-moss-500 tracking-widest uppercase">03</span>
+          </div>
+          <h2 class="font-display text-5xl md:text-6xl font-700 text-ink-900 leading-tight">
+            Mari<br><span class="italic text-moss-500">Berkenalan</span>
+          </h2>
+          <p class="text-ink-600 text-base leading-relaxed font-light max-w-xs">
+            Punya proyek atau kolaborasi menarik? Jangan ragu untuk menghubungi saya!
+          </p>
+
+          <!-- Contact info -->
+          <div class="space-y-4 pt-4">
+            <div class="flex items-center gap-3 text-sm text-ink-700">
+
+            </div>
+            <div class="flex items-center gap-3 text-sm text-ink-700">
+              <span
+                class="w-8 h-8 rounded-full bg-moss-500/10 text-moss-500 flex items-center justify-center text-xs font-mono">↗</span>
+              <span class="font-mono">Pekanbaru, Riau</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form action="" method="POST" class="space-y-6">
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label class="text-xs font-mono text-ink-600/70 tracking-widest uppercase">Nama</label>
+              <input type="text" name="name"
+                class="field w-full bg-cream-50 border border-ink-700/12 rounded-2xl px-5 py-3.5 text-sm text-ink-900 placeholder:text-ink-600/30 focus:outline-none focus:border-moss-400 transition-all"
+                placeholder="Nama kamu" required>
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-xs font-mono text-ink-600/70 tracking-widest uppercase">Email</label>
+              <input type="email" name="email"
+                class="field w-full bg-cream-50 border border-ink-700/12 rounded-2xl px-5 py-3.5 text-sm text-ink-900 placeholder:text-ink-600/30 focus:outline-none focus:border-moss-400 transition-all"
+                placeholder="contoh@email.com" required>
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-mono text-ink-600/70 tracking-widest uppercase">Pesan</label>
+            <textarea name="message" rows="6"
+              class="field w-full bg-cream-50 border border-ink-700/12 rounded-2xl px-5 py-4 text-sm text-ink-900 placeholder:text-ink-600/30 focus:outline-none focus:border-moss-400 transition-all resize-none"
+              placeholder="Tulis pesanmu di sini..." required></textarea>
+          </div>
+
+          <button type="submit"
+            class="inline-flex items-center gap-2 bg-ink-900 hover:bg-moss-500 text-cream-50 font-medium text-sm px-8 py-4 rounded-full transition-all hover:scale-105 active:scale-95">
+            Kirim Pesan
+            <span class="text-moss-400">✦</span>
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-ink-700/10 bg-cream-50 py-10">
+    <div class="max-w-6xl mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span
+          class="inline-flex items-center justify-center w-7 h-7 rounded-full border border-moss-400/40 text-moss-500 font-mono text-xs">AS</span>
+        <span class="font-sans text-sm font-medium text-ink-700">Agil Saputra</span>
+      </div>
+      <p class="font-mono text-xs text-ink-600/40 tracking-wide">&copy; 2026 — All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="#about"
+          class="font-mono text-xs text-ink-600/50 hover:text-moss-500 transition-colors tracking-wide">About</a>
+        <a href="#education"
+          class="font-mono text-xs text-ink-600/50 hover:text-moss-500 transition-colors tracking-wide">Edu</a>
+        <a href="#contact"
+          class="font-mono text-xs text-ink-600/50 hover:text-moss-500 transition-colors tracking-wide">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
