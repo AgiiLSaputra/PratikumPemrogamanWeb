@@ -1,0 +1,203 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background: #f3f4f6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+}
+
+.container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    width: 100%;
+    max-width: 480px;
+    height: fit-content;
+}
+
+h1 {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.input-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.input-row input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-row input:focus {
+    border-color: #3b82f6;
+}
+
+.input-row input.error {
+    border-color: red;
+}
+
+.input-row button {
+    padding: 8px 18px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.input-row button:hover {
+    background: #2563eb;
+}
+
+#err-msg {
+    color: red;
+    font-size: 12px;
+    min-height: 18px;
+    margin-bottom: 12px;
+}
+
+.filter-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.filter-row button {
+    flex: 1;
+    padding: 6px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: white;
+    font-size: 13px;
+    cursor: pointer;
+    color: #6b7280;
+}
+
+.filter-row button.active {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+}
+
+/* Fix: hover tidak override warna active */
+.filter-row button:hover:not(.active) {
+    background: #f3f4f6;
+}
+
+#todo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#todo-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+#todo-list li span {
+    flex: 1;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#todo-list li span.done {
+    text-decoration: line-through;
+    color: #9ca3af;
+}
+
+#todo-list li input[type="text"] {
+    flex: 1;
+    font-size: 14px;
+    padding: 2px 6px;
+    border: 1px solid #3b82f6;
+    border-radius: 4px;
+    outline: none;
+}
+
+/* Button centang */
+.btn-check {
+    background: none;
+    border: 2px solid #d1d5db;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: white;
+    flex-shrink: 0;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-check.checked {
+    background: #22c55e;
+    border-color: #22c55e;
+}
+
+.btn-check:hover:not(.checked) {
+    border-color: #22c55e;
+}
+
+.btn-edit {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #3b82f6;
+    font-size: 13px;
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ef4444;
+    font-size: 13px;
+}
+
+.btn-save {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #22c55e;
+    font-size: 13px;
+}
+
+.btn-cancel {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.empty {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 13px;
+    padding: 20px 0;
+}
